@@ -1,0 +1,19 @@
+meta {
+  name: Obtener un ejercicio por ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/exercises/:id
+  body: none
+  auth: bearer
+}
+
+params:path {
+  id: 
+}
+
+auth:bearer {
+  token: {{token}}
+}

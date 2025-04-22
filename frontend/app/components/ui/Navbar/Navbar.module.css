@@ -1,0 +1,70 @@
+.nav {
+  @apply bg-white shadow-md fixed top-0 left-0 right-0 z-50 w-full;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between;
+}
+
+.fitFlow {
+  font-family: 'Montserrat', sans-serif;
+  @apply font-bold tracking-wide text-xl text-zinc-700 no-underline;
+}
+
+/* Enlaces escritorio */
+.navLinks {
+  @apply flex items-center gap-4;
+}
+
+.navLink {
+  @apply py-2 px-2 font-medium text-zinc-600 transition-colors duration-200 relative no-underline;
+}
+
+.navLink:hover {
+  @apply text-[#ff5757]; /* Cambia el color al valor hexadecimal */
+}
+
+.navLinkActive {
+  @apply text-[#ff5757] font-semibold; /* Cambia el color al valor hexadecimal */
+}
+
+.navLinkActive::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-0.5 bg-[#ff5757]; /* Cambia el color de la línea inferior */
+}
+
+.navLinkInactive {
+  @apply text-zinc-700;
+}
+
+
+/* Menú móvil */
+.mobileMenu {
+  @apply fixed top-16 left-0 right-0 bg-white border-t border-zinc-200 shadow-md;
+  animation: slideDown 0.3s ease-out;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+
+.mobileNavLinks {
+  @apply flex flex-col py-4 px-6;
+}
+
+.mobileNavLink {
+  @apply py-3 px-4 rounded-md font-medium text-zinc-600 transition-colors duration-200 no-underline w-full text-center;
+}
+
+.mobileNavLink:hover {
+  @apply text-rose-500 bg-zinc-50;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
