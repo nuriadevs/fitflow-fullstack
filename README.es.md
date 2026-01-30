@@ -7,7 +7,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-16+-black?style=flat-square&logo=next.js)](https://nextjs.org/) [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/) [![MongoDB](https://img.shields.io/badge/MongoDB-Latest-green?style=flat-square&logo=mongodb)](https://www.mongodb.com/) [![OpenAI](https://img.shields.io/badge/OpenAI-API-412991?style=flat-square&logo=openai)](https://openai.com/)
 
 
-
+📘 Disponible también en [Inglés](./README.md)
 
 ## 🎯 Descripción General
 
@@ -313,3 +313,4 @@ Si tienes preguntas, sugerencias o simplemente quieres charlar sobre el proyecto
 ¡Dale estrella en GitHub y compártelo!
 
 [![GitHub Stars](https://camo.githubusercontent.com/ca34c3fa8dafe4a629bc2f4c72b06e64f3577528c5e4b7b8acc2ad228797fae9/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6e75726961646576732f6d616c6167612d646f672d7061726b733f7374796c653d736f6369616c)](https://github.com/nuriadevs/fitflow-fullstack)  [![GitHub Forks](https://camo.githubusercontent.com/280ba1a96fa2906bc0b4e3fecda1eecdf2de8327a48a0331fe067d067fb9eeb9/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f666f726b732f6e75726961646576732f6d616c6167612d646f672d7061726b733f7374796c653d736f6369616c)](https://github.com/nuriadevs/fitflow-fullstack)
+
