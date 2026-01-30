@@ -1,1 +1,101 @@
 
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ⭐ ARCHIVOS DE ENTORNO - CRÍTICO PARA SEGURIDAD
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# ⭐ IDEs y Editores
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ⭐ Logs adicionales
+logs/
+*.log
+pnpm-debug.log*
+lerna-debug.log*
+
+# ⭐ Archivos temporales
+*.tmp
+*.temp
+.cache/
+.parcel-cache/
+
+# ⭐ Archivos de sistema
+Thumbs.db
+Desktop.ini
+
+# ⭐ Archivos de backup
+*.bak
+*.backup
+*~
+
+# ⭐ Archivos sensibles que podrías crear
+/secrets/
+*.key
+*.cert
+*.crt
+*.pem
+*.p12
+*.pfx
+
+# ⭐ Archivos de base de datos local (si usas SQLite para desarrollo)
+*.sqlite
+*.sqlite3
+*.db
+
+# ⭐ Storybook
+storybook-static/
+
+# ⭐ Turborepo
+.turbo/
+
+# VsCode settings
+.vscode/

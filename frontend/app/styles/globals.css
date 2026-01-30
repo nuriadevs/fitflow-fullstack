@@ -1,58 +1,311 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Fonts */
+  --font-sans: var(--font-raleway);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-raleway);
+
+  /* Colors del sistema */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Coral Red palette completa */
+  --color-coral-red-50: var(--coral-red-50);
+  --color-coral-red-100: var(--coral-red-100);
+  --color-coral-red-200: var(--coral-red-200);
+  --color-coral-red-300: var(--coral-red-300);
+  --color-coral-red-400: var(--coral-red-400);
+  --color-coral-red-500: var(--coral-red-500);
+  --color-coral-red-600: var(--coral-red-600);
+  --color-coral-red-700: var(--coral-red-700);
+  --color-coral-red-800: var(--coral-red-800);
+  --color-coral-red-900: var(--coral-red-900);
+  --color-coral-red-950: var(--coral-red-950);
+
+  /* Chart colors */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar colors */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Border radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
+:root {
+  --radius: 0.625rem;
 
-html {
-  height: 100%;
-  box-sizing: border-box;
-  touch-action: manipulation;
-  font-feature-settings:
-    'case' 1,
-    'rlig' 1,
-    'calt' 0;
+  /* Background & Foreground */
+
+  /* Card */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+
+  /* Popover */
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+
+  /* Primary (Coral Red #ea4949) */
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+
+  /* Secondary (Amarillo verdoso #cabc28) */
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+
+  /* Muted */
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+
+  /* Accent (tono claro de coral) */
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+
+  /* Destructive (coral más oscuro) */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0.01 25);
+
+  /* Border & Input */
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+
+  /* Ring (coral red) */
+  --ring: oklch(0.708 0 0);
+
+  /* Coral Red palette completa */
+  --coral-red-50: oklch(0.99 0.005 25);   /* #fef2f2 */
+  --coral-red-100: oklch(0.95 0.03 25);   /* #fde3e3 */
+  --coral-red-200: oklch(0.90 0.06 25);   /* #fccccc */
+  --coral-red-300: oklch(0.82 0.12 25);   /* #f9a8a8 */
+  --coral-red-400: oklch(0.71 0.18 25);   /* #f47575 */
+  --coral-red-500: oklch(0.64 0.21 25);   /* #ea4949 */
+  --coral-red-600: oklch(0.55 0.23 25);   /* #d72b2b */
+  --coral-red-700: oklch(0.47 0.20 25);   /* #b42121 */
+  --coral-red-800: oklch(0.41 0.17 25);   /* #951f1f */
+  --coral-red-900: oklch(0.36 0.14 25);   /* #7c2020 */
+  --coral-red-950: oklch(0.22 0.08 25);   /* #430c0c */
+
+  /* Chart colors (variaciones del coral red) */
+  --chart-1: oklch(0.646 0.222 41.116);  /* lighter */
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);  /* base */
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);  /* darker */
+
+  /* Sidebar */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
 }
 
-html,
-body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
-    'Helvetica', sans-serif;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  @apply text-white bg-zinc-800 antialiased;
+.dark {
+  /* Background & Foreground */
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+
+  /* Card */
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+
+  /* Popover */
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+
+  /* Primary (Coral Red más brillante en dark) */
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+
+  /* Secondary (Amarillo más brillante) */
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+
+  /* Muted */
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+
+  /* Accent */
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+
+  /* Destructive */
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.99 0.01 25);
+
+  /* Border & Input */
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+
+  /* Ring */
+  --ring: oklch(0.556 0 0);
+
+  /* Coral Red palette (igual en dark) */
+  --coral-red-50: oklch(0.99 0.005 25);
+  --coral-red-100: oklch(0.95 0.03 25);
+  --coral-red-200: oklch(0.90 0.06 25);
+  --coral-red-300: oklch(0.82 0.12 25);
+  --coral-red-400: oklch(0.71 0.18 25);
+  --coral-red-500: oklch(0.64 0.21 25);
+  --coral-red-600: oklch(0.55 0.23 25);
+  --coral-red-700: oklch(0.47 0.20 25);
+  --coral-red-800: oklch(0.41 0.17 25);
+  --coral-red-900: oklch(0.36 0.14 25);
+  --coral-red-950: oklch(0.22 0.08 25);
+
+  /* Chart colors */
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+
+  /* Sidebar */
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
 }
 
-body {
-  position: relative;
-  min-height: 100%;
-  margin: 0;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Outline solo visible con navegación por teclado */
+  *:focus-visible {
+    @apply outline-ring outline-2 outline-offset-2;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
 }
 
-a {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px; /* Bordes redondeados */
+  font-size: 16px;
+  font-weight: 500;
+  color: white; /* Color del texto por defecto */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para el botón */
 }
 
-p a {
-  @apply hover:underline;
+.button:hover {
+  background-color: #f0f0f0; /* Fondo cuando el ratón pasa por encima */
 }
 
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+.button:focus {
+  outline: none; /* Elimina el borde de enfoque */
 }
 
-.height-screen-helper {
-  min-height: calc(100vh - 80px);
+/* Variante para fondo oscuro */
+.button-dark {
+  color: white; /* Texto blanco */
+  background-color: #333; /* Fondo oscuro */
 }
 
+.button-dark:hover {
+  background-color: #444; /* Fondo cuando el ratón pasa por encima */
+}
 
+.button-dark:active {
+  transform: none; /* Elimina el efecto de transformación en el estado activo */
+}
+
+/* Variante para botones con fondo rojo */
+.button-red {
+  color: white; /* Texto blanco */
+  background-color: #ff5757; /* Fondo rojo */
+}
+
+.button-red:hover {
+  background-color: #ff3a3a; /* Fondo más oscuro cuando el ratón pasa por encima */
+}
+
+.button-red:active {
+  transform: none; /* Elimina el efecto de transformación en el estado activo */
+}
+
+/* Variante para fondo oscuro */
+.button-dark-red {
+  color: white; /* Texto blanco */
+  background-color: #ba1818; /* Fondo oscuro */
+}
+.button-dark-red:hover {
+  background-color: #a01414; /* Fondo cuando el ratón pasa por encima */
+}
+.button-dark-red:active {
+  transform: none; /* Elimina el efecto de transformación en el estado activo */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

@@ -1,3 +1,4 @@
+// backend/src/services/rag/query.ts
 import { Index as UpstashIndex } from '@upstash/vector'
 
 // Initialize Upstash Vector client

@@ -1,23 +1,13 @@
-'use client'
+import HeroSection from '@/components/home/hero-section';
+import CTASection from '@/components/home/cta-section';
+import FeatureSection from '@/components/home/feature-section';
 
-
-import HeroSection from './components/Home/HeroSection'
-import FeaturesSection from './components/Home/FeaturesSection'
-import CTASection from './components/Home/CTASection'
-import { Navbar } from '../app/components/ui/Navbar'
-import {Footer} from '../app/components/ui/Footer'
-
-
-export default function HomePage() {
-
-
+export default function Home() {
   return (
     <>
-    <Navbar />
       <HeroSection />
-      <FeaturesSection />
+      <FeatureSection />
       <CTASection />
-      <Footer />
     </>
-  )
+  );
 }

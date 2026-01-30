@@ -1,51 +1,66 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useAuth } from './useAuth';
-import { Exercise } from '../../../shared/types/exercise.interface';
+
+'use client';
+
+import { useEffect, useState, useCallback } from 'react';
+import { useAuth } from '@/hooks/use-auth';
+import { Exercise } from "@/types/exercise.interface";
 
 export const useProfile = () => {
-  const router = useRouter();
+
   const { user, isLoading: authLoading, logout } = useAuth();
   const [exercises, setExercises] = useState<Exercise[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const fetchExercises = async () => {
-    if (!user) return;
+  const fetchExercises = useCallback(async () => {
+
+    const userId = user?._id;
+    
+    if (!userId) {
+      return;
+    }
 
     setIsLoading(true);
+    
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/exercises?userId=${user.id}`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
+      const url = `${apiUrl}/api/exercises?userId=${userId}`;
+      
+      const res = await fetch(url, { 
         credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        cache: 'no-store',
       });
 
       if (!res.ok) {
-        console.error('No se pudieron obtener los ejercicios');
+        console.error('❌ Error al obtener ejercicios:', res.status);
         return;
       }
 
       const data = await res.json();
-      if (data.exercises) {
-        setExercises(data.exercises);
-      }
+      
+      setExercises(data.exercises || []);
+      
     } catch (error) {
-      console.error('Error al obtener ejercicios:', error);
-      router.push('/auth/signin');
+      console.error('Error:', error);
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [user]);
 
   useEffect(() => {
-    if (!authLoading) {
+    if (!authLoading && user) {
       fetchExercises();
     }
-  }, [authLoading, user, router]);
+  }, [authLoading, user, fetchExercises]);
 
   return {
     user,
     exercises,
     setExercises,
     isLoading: authLoading || isLoading,
-    logout
+    logout,
+    refetchExercises: fetchExercises,
   };
 };

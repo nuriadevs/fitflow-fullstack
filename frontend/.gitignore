@@ -30,8 +30,13 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# ⭐ ARCHIVOS DE ENTORNO - CRÍTICO PARA SEGURIDAD
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
 
 # vercel
 .vercel
@@ -39,3 +44,57 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ⭐ IDEs y Editores
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ⭐ Logs adicionales
+logs/
+*.log
+pnpm-debug.log*
+lerna-debug.log*
+
+# ⭐ Archivos temporales
+*.tmp
+*.temp
+.cache/
+.parcel-cache/
+
+# ⭐ Archivos de sistema
+Thumbs.db
+Desktop.ini
+
+# ⭐ Archivos de backup
+*.bak
+*.backup
+*~
+
+# ⭐ Archivos sensibles que podrías crear
+/secrets/
+*.key
+*.cert
+*.crt
+*.pem
+*.p12
+*.pfx
+
+# ⭐ Archivos de base de datos local (si usas SQLite para desarrollo)
+*.sqlite
+*.sqlite3
+*.db
+
+# ⭐ Storybook
+storybook-static/
+
+# ⭐ Turborepo
+.turbo/
+
+# VsCode settings
+.vscode/
